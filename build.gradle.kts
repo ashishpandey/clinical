@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	idea
 	kotlin("jvm") version "1.3.21"
+	jacoco
 	maven
 	signing
 	id("io.codearte.nexus-staging") version "0.20.0"
@@ -107,4 +108,15 @@ val uploadArchives by tasks.getting(Upload::class) {
 			}
 		}
 	}
+}
+
+val jacocoTestReport by tasks.getting(JacocoReport::class) {
+	reports {
+		xml.isEnabled = true
+		html.isEnabled = false
+	}
+}
+
+val check by tasks.getting {
+	dependsOn(jacocoTestReport)
 }
