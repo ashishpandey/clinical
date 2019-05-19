@@ -1,3 +1,6 @@
+# gradle runtime files
+.gradle
+
 # Compiled class file
 *.class
 
