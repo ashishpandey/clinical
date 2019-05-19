@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.apandey"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
 	mavenCentral()
@@ -67,7 +67,7 @@ val uploadArchives by tasks.getting(Upload::class) {
 		withConvention(MavenRepositoryHandlerConvention::class) {
 			mavenDeployer {
 				beforeDeployment( object: Action<MavenDeployment> {
-					override fun execute(deployment: MavenDeployment): Unit { signing.signPom(deployment) }
+					override fun execute(deployment: MavenDeployment) { signing.signPom(deployment) }
 				})
 
 				withGroovyBuilder {
