@@ -54,12 +54,15 @@ signing {
 }
 
 val uploadArchives by tasks.getting(Upload::class) {
-	val ossrhUsername: String by project
-	val ossrhPassword: String by project
+	val ossrhUsername: String? by project
+	val ossrhPassword: String? by project
 
 	fun GroovyBuilderScope.repo(type: String, mavenUrl: String) {
 		type("url" to mavenUrl) {
-			"authentication"( "userName" to ossrhUsername, "password" to ossrhPassword)
+			"authentication"(
+					"userName" to ossrhUsername,
+					"password" to ossrhPassword
+			)
 		}
 	}
 
