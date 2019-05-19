@@ -4,5 +4,5 @@ jdk:
 before_install:
   - chmod +x gradlew
 script:
-  - ./gradlew check
-  - ./gradlew codeCoverageReport
+  - ./gradlew assemble codeCoverageReport -x signArchives
+
