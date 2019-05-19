@@ -3,6 +3,8 @@ jdk:
   - openjdk8
 before_install:
   - chmod +x gradlew
+install:
+  - ./gradlew assemble -x signArchives
 script:
-  - ./gradlew assemble codeCoverageReport -x signArchives
-
+  - ./gradlew check
+  - ./gradlew codeCoverageReport
