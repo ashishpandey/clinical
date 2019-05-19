@@ -1,4 +1,3 @@
-import org.gradle.internal.impldep.org.apache.maven.artifact.ant.RemoteRepository
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -6,10 +5,11 @@ plugins {
 	kotlin("jvm") version "1.3.21"
 	maven
 	signing
+	id("io.codearte.nexus-staging") version "0.20.0"
 }
 
 group = "com.apandey"
-version = "0.1"
+version = "0.1.0"
 
 repositories {
 	mavenCentral()
@@ -37,8 +37,15 @@ val sourcesJar by tasks.registering(Jar::class) {
 	from(sourceSets["main"].allSource)
 }
 
+val javadoc by tasks.getting
+val javadocJar by tasks.registering(Jar::class) {
+	archiveClassifier.set("javadoc")
+	from(javadoc)
+}
+
 artifacts {
 	archives(sourcesJar)
+	archives(javadocJar)
 }
 
 signing {
