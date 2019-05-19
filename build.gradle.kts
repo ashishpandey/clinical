@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.apandey"
-version = "0.1.1"
+version = "0.1.2"
 
 repositories {
 	mavenCentral()
@@ -20,6 +20,7 @@ dependencies {
 	implementation(kotlin("stdlib"))
 
 	testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
+	testImplementation("com.willowtreeapps.assertk:assertk-jvm:0.14")
 }
 
 tasks.withType<Test> {
