@@ -1,5 +1,7 @@
-# gradle runtime files
+# gradle / idea runtime files
 .gradle
+.idea
+gradle.properties
 
 # Compiled class file
 *.class
