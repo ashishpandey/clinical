@@ -7,6 +7,7 @@ plugins {
 	maven
 	signing
 	id("io.codearte.nexus-staging") version "0.20.0"
+	id("org.jetbrains.dokka") version "0.9.18"
 }
 
 group = "com.apandey"
@@ -14,6 +15,7 @@ version = "0.1.2"
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 dependencies {
@@ -39,10 +41,10 @@ val sourcesJar by tasks.registering(Jar::class) {
 	from(sourceSets["main"].allSource)
 }
 
-val javadoc by tasks.getting
+val dokka by tasks.getting
 val javadocJar by tasks.registering(Jar::class) {
 	archiveClassifier.set("javadoc")
-	from(javadoc)
+	from(dokka)
 }
 
 artifacts {
